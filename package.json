@@ -1,0 +1,65 @@
+{
+  "name": "dsh-provider-pool",
+  "version": "0.1.0",
+  "description": "Provider pool for DeepSeek Harness: a local OpenAI-compatible proxy that tries your model providers by priority and falls back automatically.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "icon": "assets/icon.png",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "files": [
+    "lib/index.js",
+    "lib/core.js",
+    "lib/client.js",
+    "lib/client.template.js",
+    "app/panel.js",
+    "assets/icon.png",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE",
+    "build.mjs",
+    "test/smoke.mjs"
+  ],
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node test/smoke.mjs",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "plugin",
+    "provider-pool",
+    "fallback",
+    "openai-compatible",
+    "proxy",
+    "dsh-plugin",
+    "dsh-plugin-panel"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": ">=4.0.0 <5"
+  },
+  "license": "MIT"
+}
